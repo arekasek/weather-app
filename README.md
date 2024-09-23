@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WeatherApp - 5 Day Weather Forecast
 
-## Getting Started
+WeatherApp is a React-based weather forecast application that allows users to search for the 5-day weather forecast of any city. The app uses the OpenWeather API to retrieve weather data and displays it in a clean, responsive UI with Tailwind CSS. This app provides users with a simple interface to view the current weather as well as upcoming weather conditions.
 
-First, run the development server:
+## Features
+- **5-Day Weather Forecast**: Get detailed weather forecasts for any city for the next 5 days.
+- **Current Weather Information**: View real-time weather updates including temperature, humidity, wind speed, and more.
+- **Responsive Design**: The UI is responsive and adapts to different screen sizes, making it accessible on mobile, tablet, and desktop devices.
+- **Search by City**: Enter any city name to fetch weather data quickly and efficiently.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Prerequisites
+Before running the app, ensure you have the following:
+- **Node.js** (v12.x or later)
+- **NPM** or **Yarn**
+- **OpenWeather API key**
