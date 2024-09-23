@@ -7,6 +7,18 @@ const WeatherApp = () => {
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState(null);
 
+  const weatherIcons = {
+    "clear sky": "/clear-sky.svg",
+    "few clouds": "/few-clouds.svg",
+    "scattered clouds": "/scattered-clouds.svg",
+    "broken clouds": "/broken-clouds.svg",
+    "shower rain": "/shower-rain.svg",
+    rain: "/rain.svg",
+    thunderstorm: "/thunderstorm.svg",
+    snow: "/snow.svg",
+    mist: "/mist.svg",
+  };
+
   const fetchCoordinates = async (city) => {
     try {
       const response = await axios.get(
@@ -93,61 +105,47 @@ const WeatherApp = () => {
   };
 
   return (
-    <>
-      <div className="min-h-screen flex flex-col items-center justify-center w-full bg-mdBlue p-6">
-        <div className="w-full max-w-5xl p-8 bg-[#82a5cf3b] rounded-lg shadow-lg">
-          <h1 className="text-3xl mb-8">5 Day Weather Forecast</h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Lewa część z formularzem */}
-            <div className="col-span-1 md:col-span-1 bg-[#31619c1f] p-6 rounded-lg">
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  value={city}
-                  onChange={handleCityChange}
-                  placeholder="Enter city"
-                  className="p-2 border rounded"
+    <div className="flex flex-row">
+      <div className="min-h-screen  w-[35vw] bg-[#2161af86] flex flex-col items-center p-8 gap-8">
+        <form onSubmit={handleSubmit} className="flex flex-row gap-4 w-full">
+          <input
+            type="text"
+            value={city}
+            onChange={handleCityChange}
+            placeholder="Enter city"
+            className="p-2 border rounded"
+          />
+          <button type="submit" className="p-2 bg-blue-500 text-white rounded">
+            Get Forecast
+          </button>
+        </form>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+        {forecast.length > 0 && (
+          <div className="col-span-2 row-span-2 bg-[#31619c1f] p-6 rounded-lg flex flex-col">
+            <div className="grid grid-cols-1">
+              <div className="flex flex-col items-center">
+                <img
+                  src={
+                    weatherIcons[forecast[0].weather[0].description] ||
+                    "/icons/weather/default.png"
+                  }
+                  alt={forecast[0].weather[0].description}
+                  className="w-64"
                 />
-                <button
-                  type="submit"
-                  className="p-2 bg-blue-500 text-white rounded"
-                >
-                  Get Forecast
-                </button>
-              </form>
-              {error && <p className="text-red-500 mt-4">{error}</p>}
-            </div>
-
-            {forecast.length > 0 && (
-              <div className="col-span-2 bg-[#31619c1f] p-6 rounded-lg flex flex-col">
-                <h2 className="text-xl mb-4 font-semibold">Current Weather:</h2>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="flex flex-col items-center">
-                    <img
-                      src={`http://openweathermap.org/img/w/${forecast[0].weather[0].icon}.png`}
-                      alt={forecast[0].weather[0].description}
-                      className="w-16 h-16"
-                    />
-                    <p className="font-bold text-2xl">{city}</p>
-                    <p className="font-bold text-3xl">
-                      {Math.ceil(forecast[0].main.temp_max)}°C
-                    </p>
-                    <p>{forecast[0].weather[0].description}</p>
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <p>Humidity: {forecast[0].main.humidity}%</p>
-                    <p>Wind Speed: {forecast[0].wind.speed} km/h</p>
-                    <p>Pressure: {forecast[0].main.pressure} hPa</p>
-                  </div>
-                </div>
+                <p className="font-bold text-2xl">{city}</p>
+                <p className="font-bold text-3xl">
+                  {Math.ceil(forecast[0].main.temp_max)}°C
+                </p>
+                <p>{forecast[0].weather[0].description}</p>
               </div>
-            )}
+            </div>
           </div>
-
-          {/* Prognoza na kolejne dni */}
+        )}
+      </div>
+      <div className="min-h-screen flex flex-col items-center justify-center w-full bg-mdBlue p-6">
+        <div className="w-fit  p-8  rounded-lg">
           {forecast.length > 0 && (
-            <div className="bg-[#31619c1f] p-6 rounded-lg mt-6">
-              <h2 className="text-xl font-semibold mb-4">5-Day Forecast:</h2>
+            <div className="bg-[#31619c1f] p-6 rounded-lg">
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
                 {forecast.map((day, index) => (
                   <div
@@ -155,9 +153,12 @@ const WeatherApp = () => {
                     className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center"
                   >
                     <img
-                      src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`}
+                      src={
+                        weatherIcons[day.weather[0].description] ||
+                        "/icons/weather/default.png"
+                      }
                       alt={day.weather[0].description}
-                      className="w-12 h-12 mb-2"
+                      className="w-12 h-12"
                     />
                     <p className="font-bold">
                       {new Date(day.dt_txt).toLocaleDateString()}
@@ -176,7 +177,7 @@ const WeatherApp = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
