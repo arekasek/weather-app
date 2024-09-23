@@ -107,7 +107,10 @@ const WeatherApp = () => {
   return (
     <div className="flex flex-row">
       <div className="min-h-screen  w-[35vw] bg-[#2161af86] flex flex-col items-center p-8 gap-8">
-        <form onSubmit={handleSubmit} className="flex flex-row gap-4 w-full">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-row gap-4 w-full justify-center"
+        >
           <input
             type="text"
             value={city}
