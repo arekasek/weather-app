@@ -107,10 +107,10 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="max-h-screen w-full flex items-center justify-center overflow-hidden">
-      <div className="bg-white p-10 w-[100%] h-[100vh] flex flex-col">
+    <div className="min-h-screen w-full flex items-center justify-center p-8 bg-[#7c7c7c6c]">
+      <div className="bg-white w-[90vw] h-[90vh] flex flex-col shadow-2xl rounded-3xl">
         <div className="flex flex-row h-full">
-          <div className="w-[35vw] bg-[#2161af86] flex flex-col items-center p-8 gap-8 h-full">
+          <div className="left-side-weather w-[35vw] bg-[#e2e2e28e] rounded-l-3xl flex flex-col items-center p-8 gap-8 h-full">
             <form
               onSubmit={handleSubmit}
               className="flex flex-row gap-4 w-full justify-center"
@@ -166,7 +166,7 @@ const WeatherApp = () => {
               </div>
             )}
           </div>
-          <div className="flex-grow flex flex-col items-center justify-center w-full bg-mdBlue p-6 h-full overflow-hidden">
+          <div className="right-side-weather flex-grow flex flex-col items-center justify-center w-full rounded-r-3xl bg-[#9e9e9e42] p-6 h-full overflow-hidden">
             <div className="w-fit p-8 rounded-lg">
               {forecast.length > 0 && (
                 <div className="bg-[#31619c1f] p-6 rounded-lg">
