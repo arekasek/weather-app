@@ -107,7 +107,7 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-8 bg-[#7c7c7c6c]">
+    <div className="min-h-screen w-full flex items-center justify-center p-8 bg-[#7c7c7c98]">
       <div className="bg-white w-[90vw] h-[90vh] flex flex-col shadow-2xl rounded-3xl">
         <div className="flex flex-row h-full">
           <div className="left-side-weather w-[35vw] bg-[#e2e2e28e] rounded-l-3xl flex flex-col items-center p-8 gap-8 h-full">
@@ -132,7 +132,7 @@ const WeatherApp = () => {
             {error && <p className="text-red-500 mt-4">{error}</p>}
             {forecast.length > 0 && (
               <div className="flex flex-col items-center h-full justify-center gap-4">
-                <div className="relative">
+                <div className="relative ">
                   <img
                     src={
                       weatherIcons[forecast[0].weather[0].description] ||
