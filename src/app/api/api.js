@@ -10,14 +10,14 @@ const WeatherApp = () => {
     try {
       const response = await axios.get(`http://api.weatherstack.com/forecast`, {
         params: {
-          access_key: process.env.REACT_APP_WEATHERSTACK_API_KEY, // REACT_APP_ prefix dla env w React
+          access_key: process.env.REACT_APP_WEATHERSTACK_API_KEY,
           query: city,
-          forecast_days: 5, // Liczba dni prognozy
+          forecast_days: 5,
         },
       });
 
       setForecast(response.data);
-      setError(null); // Wyczyszczenie ewentualnych błędów
+      setError(null);
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setError("Could not fetch weather data. Please try again.");
